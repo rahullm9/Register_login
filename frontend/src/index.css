@@ -1,39 +1,187 @@
-.img-box{
+/* General styles */
+@import "tailwindcss";
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.item-container {
+  margin-top: 15px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid #ccc;
+  display: flex;
+  flex-direction: row;
+}
+
+.img-box {
   background-color: mediumseagreen;
   width: 50%;
   height: 100vh;
-  border-radius: 20px 0 0 20px; /* Rounded left side */
-  overflow: hidden; /* Ensures image does not break out of the border-radius */
+  border-radius: 20px 0 0 20px;
+  overflow: hidden;
 }
-.signup-box{
+
+.img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.signup-box {
   background-color: rebeccapurple;
   width: 50%;
   height: 100vh;
 }
-.item-container{
-  margin-top: 15px;
-  border-radius: 20px; /* Adjust the radius as needed */
-  overflow: hidden; /* Ensures child elements respect the rounded corners */
-  border: 2px solid #ccc; /* Optional: Add a border */
-}
-.img{
-  width: 100%;
-  height: 100vh;
-  object-fit: cover; /* Crop image properly */
-  border-radius: inherit; /* Inherit border-radius from img-box */
-}
-.signup-box h1{
+
+.signup-box h1 {
   color: white;
-  font-weight:bold;
+  font-weight: bold;
+  font-size: 2rem;
 }
-.signup-items{
+
+.signup-items {
   flex-direction: column;
   gap: 15px;
   width: 70%;
   height: 50%;
 }
-.signup-items input, button{
+
+.signup-items input,
+.signup-items button {
   height: 40px;
   border: none;
   outline: none;
+  width: 100%;
+  padding: 0 10px;
+  border-radius: 4px;
 }
+
+.signup-items button {
+  background-color: #fff;
+  color: rebeccapurple;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.signup-items button:hover {
+  background-color: #e0e0e0;
+}
+
+.signup-box p {
+  color: white;
+  margin-top: 15px;
+}
+
+.signup-box a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .item-container {
+    flex-direction: column;
+    height: auto; /* Allow height to adjust based on content */
+  }
+
+  .img-box {
+    width: 100%;
+    height: 30vh; /* Reduce height on mobile */
+    border-radius: 20px 20px 0 0; /* Rounded top only */
+  }
+
+  .img {
+    height: 30vh; /* Match img-box height */
+  }
+
+  .signup-box {
+    width: 100%;
+    height: auto; /* Adjust height based on content */
+    padding: 20px 0;
+    border-radius: 0 0 20px 20px; /* Rounded bottom only */
+  }
+
+  .signup-items {
+    width: 85%; /* Slightly wider on mobile */
+    height: auto; /* Adjust height dynamically */
+  }
+
+  .signup-box h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-box h1 {
+    font-size: 1.2rem;
+  }
+
+  .signup-items input,
+  .signup-items button {
+    height: 35px; /* Slightly smaller inputs/buttons */
+  }
+
+  .signup-box p {
+    font-size: 0.9rem;
+  }
+}
+@import "tailwindcss";
+
+@property --border-angle{
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes rotate-border {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+.animated-border {
+  --border-angle: 0deg;
+  animation: rotate-border 3s linear infinite;
+  background: conic-gradient(from var(--border-angle), black 80%, #22c55e 90%, black 100%); /* green-500 */
+}
+@keyframes glowingPulse {
+  0% {
+    text-shadow: 0 0 5px #22c55e, 0 0 10px #22c55e, 0 0 15px #22c55e;
+    opacity: 1;
+  }
+  50% {
+    text-shadow: 0 0 10px #22c55e, 0 0 20px #22c55e, 0 0 30px #22c55e;
+    opacity: 1;
+  }
+  100% {
+    text-shadow: 0 0 5px #22c55e, 0 0 10px #22c55e, 0 0 15px #22c55e;
+    opacity: 1;
+  }
+}
+
+/* Apply the glowing pulse effect */
+.glowing-pulse {
+  animation: glowingPulse 1.5s infinite ease-in-out;
+}
+
+.login-items input{
+  border-bottom: 2px solid white;
+  outline: none;
+  
+}
+.login-items button{
+  border: 2px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.login-items:hover{
+  box-shadow: #22c55e ;
+}
+
+.forget-pass{
+  
+  align-items: start;
+}
+
